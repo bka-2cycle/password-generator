@@ -60,44 +60,7 @@
 
     // return passwordArray.join()
 
-  
-
-
-
-
-
-
-
-// user clicks button to generate password
-
-// a series of prompts for password criteria
-
-// user selects which criteria to include in the password
-
-// prompt for length of password
-
-// user chooses a # between 8 and 128 character length
-
-// asked for character types to include in the password
-
-// choices to include: lc, ul, numeric, and or special characters
-
-// when I answer each prompt
-// input should be validated and at least one character type should be selected
-
-// when all prompts are answered
-
-// password is generated that matches the selected criteria
-
-//once generated the password is displayed in an alert (or written to the page)
-
-
-
-
-
-
-
-
+ 
 
 
 
@@ -121,15 +84,17 @@ function generatePassword() {
   var numsArray = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
   var specCharArray = ["!", "#", "$", "%", "&", "(", ")", "*", "+"];
   var possibleChar = [];
-  var passwordArray = [];
+  var passwordArray = "";
   //mine
-  var finishedPassword = [];
-  var numChars = [];
+  //var finishedPassword = [];
+  //var numChars = [];
 
   // the value of numChars is stored where, after it is defined by the user? in numChars variable, everytime its referenced thereafter?
   // or do I create an undeclared var to store that value?  ( var numChars; )
   
-  var numChars = prompt("How many characters would you like in your password?")
+  var numChars = prompt("How many characters would you like in your password?");
+numChars = parseInt(numChars);
+
 // validate above input ( Parameters give a name to the data to be passed into the function, in this case "chars" FUNCTION NO WORKIE)
   // function validateUserInput(chars) {
                   //parsInt(chars) make sure that it is an integer, if not return null
@@ -138,10 +103,10 @@ function generatePassword() {
   //}
   if (numChars < 8 || numChars > 128) {
     alert("Your password needs to be between 8 and 128 characters!");
-    return generatePassword()
+    return generatePassword();
     }
 
-  console.log(numChars)
+  console.log(numChars);
 
   var lcChar = confirm("Would you like Lower Case characters?")
   var ucChar = confirm("Would you like Upper Case characters?")
@@ -159,23 +124,23 @@ function generatePassword() {
   
           //function createUserPool() {
     if (lcChar) {
-      possibleChar.concat(lcCharArray);
+      possibleChar = possibleChar.concat(lcCharArray);
       //alert("lc was concated!!");
       //console.log(possibleChar);
     }
 
     if (ucChar) {
-      possibleChar.concat(ucCharArray);
+      possibleChar = possibleChar.concat(ucCharArray);
       //alert("uc was concated!!");
     }
 
     if (nums) {
-      possibleChar.concat(numsArray);
+      possibleChar = possibleChar.concat(numsArray);
       //alert("nums was concated!!");
     }
 
     if (specChar) {
-      possibleChar.concat(specCharArray);
+      possibleChar = possibleChar.concat(specCharArray);
       //alert("special was concated!!");
     }
           //}
@@ -186,7 +151,7 @@ function generatePassword() {
 
   
 
-            // test for VEIFY console.log(specCharArray.length)
+    console.log(possibleChar);
     
             // testLoop for VERIFY for (var i = 0; i < possibleChar.length; i++) {
             //console.log("Great to see anything, " + possibleChar[i] + " anything at all");
@@ -198,24 +163,25 @@ function generatePassword() {
     //(why, the character count/length was chosen by user: defined as: var numChars or user input perameter "chars"
     //maybe difine the results of numChars?
 
-
+console.log(typeof numChars)
     
 //loop through possibleChars and select a random character from the possibleChar array based on how many characters they entered into the prompt or---
     //translated=loop through possibleChar array and select a random character x-times ( x = the # of characters they entered into the prompt for numChars )
-    for (var i = 0; i < possibleChar.length; i++) {
-    possibleChar = Math.floor(Math.random() * numChars.length);
+    for (var i = 0; i < numChars; i++) {
+    index = Math.floor(Math.random() * possibleChar.length);
+    passwordArray += possibleChar[index];
       //var finishedPassword = [i];
     }
-
+console.log(passwordArray);
 
 // push() the randomly generated character(s) to a empty array called passwordArray
-passwordArray.push([i]);
+//passwordArray.push([i]);
 
-    // return passwordArray.join()
-    return passwordArray.join(finishedPassword);
+    return passwordArray;
+    //return passwordArray.join(finishedPassword);
 
 
-  return finishedPassword;
+  //return finishedPassword;
 }
 
 function writePassword() {
