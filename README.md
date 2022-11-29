@@ -12,9 +12,9 @@ Its creates complex passwords quickly and efficiently.
 
 During this project I learned how to implement various loops, functions and arrays within Javascript to implement the password generator.
 
-## Installation
+## URL
 
-N/A
+https://bka-2cycle.github.io/password-generator/
 
 ## Usage
 
